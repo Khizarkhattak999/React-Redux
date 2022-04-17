@@ -1,7 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-
+import { setTask } from "../redux/action/action";
 const AddTodoForm = () => {
     const [item, setItem] = useState('')
 
@@ -12,12 +12,7 @@ const AddTodoForm = () => {
         setItem(e.target.value)
     }
     
-    const Addtodo = (e) => {
-        e.preventDefault()
-        
-         dispatch ({type: 'savetodo', title: item})
-
-    }
+  
 
   return (
     <div>
@@ -31,7 +26,7 @@ const AddTodoForm = () => {
           value={item}
         />
       </div>
-      <Button variant="contained" sx={{backgroundColor:'#FF5733', marginTop: 1, marginLeft: 54}} onClick={Addtodo}>Add</Button>
+      <Button variant="contained" sx={{backgroundColor:'#FF5733', marginTop: 1, marginLeft: 54}} onClick={()=>dispatch(setTask({id:Date.now(),title:item}))}>Add</Button>
 
     </div>
   );
