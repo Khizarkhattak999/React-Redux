@@ -1,6 +1,6 @@
-import { combineReducers } from "redux";
-import { TaskReducer } from "./reducer";
-const reducers=combineReducers({
-    AllTaskList:TaskReducer
-})
-export default reducers
+import { createStore } from "redux";
+import { TodoListReducer } from "./reducer";
+
+const store = createStore(TodoListReducer)
+
+export default store
