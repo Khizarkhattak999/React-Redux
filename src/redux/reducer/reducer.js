@@ -1,21 +1,27 @@
 
-import ActionType from "../action-type/action-type";
 const initialState={
     allTask:[]
 }
-export const TaskReducer=(state=initialState,{type,payload})=> 
+export const TodoListReducer=(state=initialState, action) => 
 {
-    console.log("reducer",payload)
-    console.log(type)
     
-    switch(type)
+    if(action.type === 'AddToDo')
     {
-        case ActionType.AddTaskList:
-            
-            return  {...state,allTask:[...state.allTask,payload]};
-        default:
-            return state;
+         return  {
+             ...state,
+             allTask:[...state.allTask, action.payload]
+
+            };
+
+        }
+
+    if (action.type === 'DeleteToDo') {
+        return {
+            ...state,
+            allTask: state.allTask.filter(todo => todo.id !== action.payload)
+        }
     }
+        return state;
 }
 
 
